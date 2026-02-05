@@ -19,7 +19,7 @@ myModel += pulp.lpSum(x[day][shift][smurf]
 for smurf in smurfs:
     myModel += pulp.lpSum(x[day][shift][smurf] for day in days for shift in shifts) == 4, f"Weekly_Shifts_{smurf}"
 
-# Contrait: Limits the number of shifts per day per smurf
+# Constrait: Limits the number of shifts per day per smurf
 for day in days:
     for smurf in smurfs:
         myModel += pulp.lpSum(x[day][shift][smurf] for shift in shifts) <= 1, f"Shifts_{day}_{smurf}"
@@ -38,8 +38,7 @@ for day in days:
         myModel += pulp.lpSum(x[day][shift][smurf] for smurf in smurfs) >= min_max_smurfs_per_day_per_shift[day][shift]["Min"], f"Smurfs_{day}_{shift}_min" 
         myModel += pulp.lpSum(x[day][shift][smurf] for smurf in smurfs) <= min_max_smurfs_per_day_per_shift[day][shift]["Max"], f"Smurfs_{day}_{shift}_max" 
 
-print(myModel)
-
+# Solve model
 myModel.solve()
 
 # Print the timetable
