@@ -18,3 +18,9 @@ myModel += 2 * x2 <= 12, "Machine_2_Capacity"
 myModel += 3 * x1 + 2 * x2 <= 18, "Machine_3_Capacity"
 # Solves the linear model using PuLP's default solver (CBC solver)
 myModel.solve()
+
+# Print statistics
+print('Status:', pulp.LpStatus[myModel.status])
+print('Objective Value:', pulp.value(myModel.objective))
+print(f" x1 = {pulp.value(x1)}")
+print(f" x2 = {pulp.value(x2)}")
