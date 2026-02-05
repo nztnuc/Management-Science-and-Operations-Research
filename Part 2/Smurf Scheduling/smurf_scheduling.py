@@ -38,7 +38,7 @@ for day in days:
         myModel += pulp.lpSum(x[day][shift][smurf] for smurf in smurfs) >= min_max_smurfs_per_day_per_shift[day][shift]["Min"], f"Smurfs_{day}_{shift}_min" 
         myModel += pulp.lpSum(x[day][shift][smurf] for smurf in smurfs) <= min_max_smurfs_per_day_per_shift[day][shift]["Max"], f"Smurfs_{day}_{shift}_max" 
 
-# print(myModel)
+print(myModel)
 
 myModel.solve()
 
@@ -47,4 +47,4 @@ for day in days:
     print(day)
     for shift in shifts:
         assigned_smurfs = [smurf for smurf in smurfs if pulp.value(x[day][shift][smurf]) > 0]
-    print(f"   {shift}: {assigned_smurfs}")
+        print(f"   {shift}: {assigned_smurfs}")
