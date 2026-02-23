@@ -728,7 +728,7 @@ if __name__ == "__main__":
     # Random policy
     print("RANDOM POLICY")
     policy = PolicyRandom()
-    # mc_policy_evaluation(env, policy, discount=0.9, num_episodes=1000, first_visit=True, seed=2506)
+    mc_policy_evaluation(env, policy, discount=0.9, num_episodes=1000, first_visit=True, seed=2506)
     
     # SARSA
     print("TD SARSA")
